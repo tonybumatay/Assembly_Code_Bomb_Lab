@@ -1,0 +1,683 @@
+Last login: Wed Feb 24 01:44:07 on ttys001
+tonys-mbp:~ Tony$ l
+-bash: l: command not found
+tonys-mbp:~ Tony$ ssh tony.bumatay@shell.cec.wustl.edu
+tony.bumatay@shell.cec.wustl.edu's password:
+Last login: Wed Feb 24 13:10:37 2016 from tonys-mbp.dhcp.wustl.edu
+##### ATTENTION #####
+
+shell.cec is no longer suited for
+computationally-heavy tasks.
+
+Please use 'qlogin' to obtain a
+terminal on one of the LinuxLab
+hosts.
+
+Thank you!
+
+EIT
+
+#####
+[tony.bumatay@shell ~]$ qlogin
+Your job 38581 ("QLOGIN") has been submitted
+waiting for interactive job to be scheduled ...
+Your interactive job 38581 has been successfully scheduled.
+Establishing /project/linuxlab/sge/qlogin_ssh.sh session to host linuxlab007.seas.wustl.edu ...
+ssh 47932 linuxlab007.seas.wustl.edu
+Warning: Permanently added '[linuxlab007.seas.wustl.edu]:47932,[172.16.3.107]:47932' (ECDSA) to the list of known hosts.
+tony.bumatay@linuxlab007.seas.wustl.edu's password:
+Last login: Wed Feb 24 13:11:04 2016 from shell.cec.wustl.edu
+[tony.bumatay@linuxlab007 ~]$ ls
+artifacts.xml        Desktop    Downloads              Music         perl5     Templates  winprofile
+CSE132-tony.bumatay  documents  eclipse.configuration  My Documents  Pictures  Users
+cse361               Documents  equeue                 p2            Public    Videos
+[tony.bumatay@linuxlab007 ~]$ cd cse361/tony.bumatay/
+[tony.bumatay@linuxlab007 tony.bumatay]$ ls
+lab0  lab1  lab2
+[tony.bumatay@linuxlab007 tony.bumatay]$ cd lab2/
+[tony.bumatay@linuxlab007 lab2]$ ls
+bomb33  bomb33.tar
+[tony.bumatay@linuxlab007 lab2]$ cd bomb
+-bash: cd: bomb: No such file or directory
+[tony.bumatay@linuxlab007 lab2]$ cd bomb33/
+[tony.bumatay@linuxlab007 bomb33]$ ls
+bomb  bomb.c  breakpoints.txt  output.txt  README  solutions.txt  symtable.txt
+[tony.bumatay@linuxlab007 bomb33]$ gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-80.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb...done.
+(gdb) source breakpoints.txt
+Breakpoint 1 at 0x4015ef
+Breakpoint 2 at 0x4015ef
+Breakpoint 3 at 0x4015f3
+Breakpoint 4 at 0x40117a
+Breakpoint 5 at 0x4012a9
+(gdb) r sol
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb sol
+/home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb: Error: Couldn't open sol
+[Inferior 1 (process 4677) exited with code 010]
+(gdb) q
+[tony.bumatay@linuxlab007 bomb33]$ gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-80.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb...done.
+(gdb) source breakpoints.txt
+Breakpoint 1 at 0x4015ef
+Breakpoint 2 at 0x4015ef
+Breakpoint 3 at 0x4015f3
+Breakpoint 4 at 0x40117a
+Breakpoint 5 at 0x4012a9
+(gdb) r solutions.txt
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+123456
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+Missing separate debuginfos, use: debuginfo-install nss-mdns-0.10-12.el7.x86_64
+(gdb) disas
+Dump of assembler code for function phase_6:
+=> 0x000000000040117a <+0>:	push   %r13
+   0x000000000040117c <+2>:	push   %r12
+   0x000000000040117e <+4>:	push   %rbp
+   0x000000000040117f <+5>:	push   %rbx
+   0x0000000000401180 <+6>:	sub    $0x58,%rsp
+   0x0000000000401184 <+10>:	lea    0x30(%rsp),%rsi
+   0x0000000000401189 <+15>:	callq  0x401625 <read_six_numbers>
+   0x000000000040118e <+20>:	lea    0x30(%rsp),%r13
+   0x0000000000401193 <+25>:	mov    $0x0,%r12d
+   0x0000000000401199 <+31>:	mov    %r13,%rbp
+   0x000000000040119c <+34>:	mov    0x0(%r13),%eax
+   0x00000000004011a0 <+38>:	sub    $0x1,%eax
+   0x00000000004011a3 <+41>:	cmp    $0x5,%eax
+   0x00000000004011a6 <+44>:	jbe    0x4011ad <phase_6+51>
+   0x00000000004011a8 <+46>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011ad <+51>:	add    $0x1,%r12d
+   0x00000000004011b1 <+55>:	cmp    $0x6,%r12d
+   0x00000000004011b5 <+59>:	jne    0x4011be <phase_6+68>
+   0x00000000004011b7 <+61>:	mov    $0x0,%esi
+   0x00000000004011bc <+66>:	jmp    0x401200 <phase_6+134>
+   0x00000000004011be <+68>:	mov    %r12d,%ebx
+   0x00000000004011c1 <+71>:	movslq %ebx,%rax
+   0x00000000004011c4 <+74>:	mov    0x30(%rsp,%rax,4),%eax
+   0x00000000004011c8 <+78>:	cmp    %eax,0x0(%rbp)
+   0x00000000004011cb <+81>:	jne    0x4011d2 <phase_6+88>
+   0x00000000004011cd <+83>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011d2 <+88>:	add    $0x1,%ebx
+   0x00000000004011d5 <+91>:	cmp    $0x5,%ebx
+   0x00000000004011d8 <+94>:	jle    0x4011c1 <phase_6+71>
+   0x00000000004011da <+96>:	add    $0x4,%r13
+   0x00000000004011de <+100>:	jmp    0x401199 <phase_6+31>
+   0x00000000004011e0 <+102>:	mov    0x8(%rdx),%rdx
+   0x00000000004011e4 <+106>:	add    $0x1,%eax
+   0x00000000004011e7 <+109>:	cmp    %ecx,%eax
+   0x00000000004011e9 <+111>:	jne    0x4011e0 <phase_6+102>
+   0x00000000004011eb <+113>:	jmp    0x4011f2 <phase_6+120>
+   0x00000000004011ed <+115>:	mov    $0x604300,%edx
+   0x00000000004011f2 <+120>:	mov    %rdx,(%rsp,%rsi,2)
+   0x00000000004011f6 <+124>:	add    $0x4,%rsi
+   0x00000000004011fa <+128>:	cmp    $0x18,%rsi
+   0x00000000004011fe <+132>:	je     0x401215 <phase_6+155>
+   0x0000000000401200 <+134>:	mov    0x30(%rsp,%rsi,1),%ecx
+   0x0000000000401204 <+138>:	cmp    $0x1,%ecx
+   0x0000000000401207 <+141>:	jle    0x4011ed <phase_6+115>
+   0x0000000000401209 <+143>:	mov    $0x1,%eax
+   0x000000000040120e <+148>:	mov    $0x604300,%edx
+   0x0000000000401213 <+153>:	jmp    0x4011e0 <phase_6+102>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401215 <+155>:	mov    (%rsp),%rbx
+   0x0000000000401219 <+159>:	lea    0x8(%rsp),%rax
+   0x000000000040121e <+164>:	lea    0x30(%rsp),%rsi
+   0x0000000000401223 <+169>:	mov    %rbx,%rcx
+   0x0000000000401226 <+172>:	mov    (%rax),%rdx
+   0x0000000000401229 <+175>:	mov    %rdx,0x8(%rcx)
+   0x000000000040122d <+179>:	add    $0x8,%rax
+   0x0000000000401231 <+183>:	cmp    %rsi,%rax
+   0x0000000000401234 <+186>:	je     0x40123b <phase_6+193>
+   0x0000000000401236 <+188>:	mov    %rdx,%rcx
+   0x0000000000401239 <+191>:	jmp    0x401226 <phase_6+172>
+   0x000000000040123b <+193>:	movq   $0x0,0x8(%rdx)
+   0x0000000000401243 <+201>:	mov    $0x5,%ebp
+   0x0000000000401248 <+206>:	mov    0x8(%rbx),%rax
+   0x000000000040124c <+210>:	mov    (%rax),%eax
+   0x000000000040124e <+212>:	cmp    %eax,(%rbx)
+   0x0000000000401250 <+214>:	jle    0x401257 <phase_6+221>
+   0x0000000000401252 <+216>:	callq  0x4015ef <explode_bomb>
+   0x0000000000401257 <+221>:	mov    0x8(%rbx),%rbx
+   0x000000000040125b <+225>:	sub    $0x1,%ebp
+   0x000000000040125e <+228>:	jne    0x401248 <phase_6+206>
+   0x0000000000401260 <+230>:	add    $0x58,%rsp
+   0x0000000000401264 <+234>:	pop    %rbx
+   0x0000000000401265 <+235>:	pop    %rbp
+   0x0000000000401266 <+236>:	pop    %r12
+   0x0000000000401268 <+238>:	pop    %r13
+   0x000000000040126a <+240>:	retq
+End of assembler dump.
+(gdb) b *0x040124e
+Breakpoint 6 at 0x40124e
+(gdb) b *0x0401252
+Breakpoint 7 at 0x401252
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x00000000004015ef in explode_bomb ()
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+123456
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+(gdb) disas
+Dump of assembler code for function phase_6:
+=> 0x000000000040117a <+0>:	push   %r13
+   0x000000000040117c <+2>:	push   %r12
+   0x000000000040117e <+4>:	push   %rbp
+   0x000000000040117f <+5>:	push   %rbx
+   0x0000000000401180 <+6>:	sub    $0x58,%rsp
+   0x0000000000401184 <+10>:	lea    0x30(%rsp),%rsi
+   0x0000000000401189 <+15>:	callq  0x401625 <read_six_numbers>
+   0x000000000040118e <+20>:	lea    0x30(%rsp),%r13
+   0x0000000000401193 <+25>:	mov    $0x0,%r12d
+   0x0000000000401199 <+31>:	mov    %r13,%rbp
+   0x000000000040119c <+34>:	mov    0x0(%r13),%eax
+   0x00000000004011a0 <+38>:	sub    $0x1,%eax
+   0x00000000004011a3 <+41>:	cmp    $0x5,%eax
+   0x00000000004011a6 <+44>:	jbe    0x4011ad <phase_6+51>
+   0x00000000004011a8 <+46>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011ad <+51>:	add    $0x1,%r12d
+   0x00000000004011b1 <+55>:	cmp    $0x6,%r12d
+   0x00000000004011b5 <+59>:	jne    0x4011be <phase_6+68>
+   0x00000000004011b7 <+61>:	mov    $0x0,%esi
+   0x00000000004011bc <+66>:	jmp    0x401200 <phase_6+134>
+   0x00000000004011be <+68>:	mov    %r12d,%ebx
+   0x00000000004011c1 <+71>:	movslq %ebx,%rax
+   0x00000000004011c4 <+74>:	mov    0x30(%rsp,%rax,4),%eax
+   0x00000000004011c8 <+78>:	cmp    %eax,0x0(%rbp)
+   0x00000000004011cb <+81>:	jne    0x4011d2 <phase_6+88>
+   0x00000000004011cd <+83>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011d2 <+88>:	add    $0x1,%ebx
+   0x00000000004011d5 <+91>:	cmp    $0x5,%ebx
+   0x00000000004011d8 <+94>:	jle    0x4011c1 <phase_6+71>
+   0x00000000004011da <+96>:	add    $0x4,%r13
+   0x00000000004011de <+100>:	jmp    0x401199 <phase_6+31>
+   0x00000000004011e0 <+102>:	mov    0x8(%rdx),%rdx
+   0x00000000004011e4 <+106>:	add    $0x1,%eax
+   0x00000000004011e7 <+109>:	cmp    %ecx,%eax
+   0x00000000004011e9 <+111>:	jne    0x4011e0 <phase_6+102>
+   0x00000000004011eb <+113>:	jmp    0x4011f2 <phase_6+120>
+   0x00000000004011ed <+115>:	mov    $0x604300,%edx
+   0x00000000004011f2 <+120>:	mov    %rdx,(%rsp,%rsi,2)
+   0x00000000004011f6 <+124>:	add    $0x4,%rsi
+   0x00000000004011fa <+128>:	cmp    $0x18,%rsi
+   0x00000000004011fe <+132>:	je     0x401215 <phase_6+155>
+   0x0000000000401200 <+134>:	mov    0x30(%rsp,%rsi,1),%ecx
+   0x0000000000401204 <+138>:	cmp    $0x1,%ecx
+   0x0000000000401207 <+141>:	jle    0x4011ed <phase_6+115>
+   0x0000000000401209 <+143>:	mov    $0x1,%eax
+   0x000000000040120e <+148>:	mov    $0x604300,%edx
+   0x0000000000401213 <+153>:	jmp    0x4011e0 <phase_6+102>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401215 <+155>:	mov    (%rsp),%rbx
+   0x0000000000401219 <+159>:	lea    0x8(%rsp),%rax
+   0x000000000040121e <+164>:	lea    0x30(%rsp),%rsi
+   0x0000000000401223 <+169>:	mov    %rbx,%rcx
+   0x0000000000401226 <+172>:	mov    (%rax),%rdx
+   0x0000000000401229 <+175>:	mov    %rdx,0x8(%rcx)
+   0x000000000040122d <+179>:	add    $0x8,%rax
+   0x0000000000401231 <+183>:	cmp    %rsi,%rax
+   0x0000000000401234 <+186>:	je     0x40123b <phase_6+193>
+   0x0000000000401236 <+188>:	mov    %rdx,%rcx
+   0x0000000000401239 <+191>:	jmp    0x401226 <phase_6+172>
+   0x000000000040123b <+193>:	movq   $0x0,0x8(%rdx)
+   0x0000000000401243 <+201>:	mov    $0x5,%ebp
+   0x0000000000401248 <+206>:	mov    0x8(%rbx),%rax
+   0x000000000040124c <+210>:	mov    (%rax),%eax
+   0x000000000040124e <+212>:	cmp    %eax,(%rbx)
+   0x0000000000401250 <+214>:	jle    0x401257 <phase_6+221>
+   0x0000000000401252 <+216>:	callq  0x4015ef <explode_bomb>
+   0x0000000000401257 <+221>:	mov    0x8(%rbx),%rbx
+   0x000000000040125b <+225>:	sub    $0x1,%ebp
+   0x000000000040125e <+228>:	jne    0x401248 <phase_6+206>
+   0x0000000000401260 <+230>:	add    $0x58,%rsp
+   0x0000000000401264 <+234>:	pop    %rbx
+   0x0000000000401265 <+235>:	pop    %rbp
+   0x0000000000401266 <+236>:	pop    %r12
+   0x0000000000401268 <+238>:	pop    %r13
+   0x000000000040126a <+240>:	retq
+End of assembler dump.
+(gdb) b *0x04011a8
+Breakpoint 8 at 0x4011a8
+(gdb) b *0x04011cd
+Breakpoint 9 at 0x4011cd
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x00000000004015ef in explode_bomb ()
+(gdb) disas
+Dump of assembler code for function explode_bomb:
+=> 0x00000000004015ef <+0>:	sub    $0x8,%rsp
+   0x00000000004015f3 <+4>:	mov    $0x402841,%edi
+   0x00000000004015f8 <+9>:	callq  0x400b40 <puts@plt>
+   0x00000000004015fd <+14>:	mov    $0x40284a,%edi
+   0x0000000000401602 <+19>:	callq  0x400b40 <puts@plt>
+   0x0000000000401607 <+24>:	mov    $0x0,%edi
+   0x000000000040160c <+29>:	callq  0x401530 <send_msg>
+   0x0000000000401611 <+34>:	mov    $0x4026f0,%edi
+   0x0000000000401616 <+39>:	callq  0x400b40 <puts@plt>
+   0x000000000040161b <+44>:	mov    $0x8,%edi
+   0x0000000000401620 <+49>:	callq  0x400c80 <exit@plt>
+End of assembler dump.
+(gdb) disas phase_6
+Dump of assembler code for function phase_6:
+   0x000000000040117a <+0>:	push   %r13
+   0x000000000040117c <+2>:	push   %r12
+   0x000000000040117e <+4>:	push   %rbp
+   0x000000000040117f <+5>:	push   %rbx
+   0x0000000000401180 <+6>:	sub    $0x58,%rsp
+   0x0000000000401184 <+10>:	lea    0x30(%rsp),%rsi
+   0x0000000000401189 <+15>:	callq  0x401625 <read_six_numbers>
+   0x000000000040118e <+20>:	lea    0x30(%rsp),%r13
+   0x0000000000401193 <+25>:	mov    $0x0,%r12d
+   0x0000000000401199 <+31>:	mov    %r13,%rbp
+   0x000000000040119c <+34>:	mov    0x0(%r13),%eax
+   0x00000000004011a0 <+38>:	sub    $0x1,%eax
+   0x00000000004011a3 <+41>:	cmp    $0x5,%eax
+   0x00000000004011a6 <+44>:	jbe    0x4011ad <phase_6+51>
+   0x00000000004011a8 <+46>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011ad <+51>:	add    $0x1,%r12d
+   0x00000000004011b1 <+55>:	cmp    $0x6,%r12d
+   0x00000000004011b5 <+59>:	jne    0x4011be <phase_6+68>
+   0x00000000004011b7 <+61>:	mov    $0x0,%esi
+   0x00000000004011bc <+66>:	jmp    0x401200 <phase_6+134>
+   0x00000000004011be <+68>:	mov    %r12d,%ebx
+   0x00000000004011c1 <+71>:	movslq %ebx,%rax
+   0x00000000004011c4 <+74>:	mov    0x30(%rsp,%rax,4),%eax
+   0x00000000004011c8 <+78>:	cmp    %eax,0x0(%rbp)
+   0x00000000004011cb <+81>:	jne    0x4011d2 <phase_6+88>
+   0x00000000004011cd <+83>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011d2 <+88>:	add    $0x1,%ebx
+   0x00000000004011d5 <+91>:	cmp    $0x5,%ebx
+   0x00000000004011d8 <+94>:	jle    0x4011c1 <phase_6+71>
+   0x00000000004011da <+96>:	add    $0x4,%r13
+   0x00000000004011de <+100>:	jmp    0x401199 <phase_6+31>
+   0x00000000004011e0 <+102>:	mov    0x8(%rdx),%rdx
+   0x00000000004011e4 <+106>:	add    $0x1,%eax
+   0x00000000004011e7 <+109>:	cmp    %ecx,%eax
+   0x00000000004011e9 <+111>:	jne    0x4011e0 <phase_6+102>
+   0x00000000004011eb <+113>:	jmp    0x4011f2 <phase_6+120>
+   0x00000000004011ed <+115>:	mov    $0x604300,%edx
+   0x00000000004011f2 <+120>:	mov    %rdx,(%rsp,%rsi,2)
+   0x00000000004011f6 <+124>:	add    $0x4,%rsi
+   0x00000000004011fa <+128>:	cmp    $0x18,%rsi
+   0x00000000004011fe <+132>:	je     0x401215 <phase_6+155>
+   0x0000000000401200 <+134>:	mov    0x30(%rsp,%rsi,1),%ecx
+   0x0000000000401204 <+138>:	cmp    $0x1,%ecx
+   0x0000000000401207 <+141>:	jle    0x4011ed <phase_6+115>
+   0x0000000000401209 <+143>:	mov    $0x1,%eax
+   0x000000000040120e <+148>:	mov    $0x604300,%edx
+   0x0000000000401213 <+153>:	jmp    0x4011e0 <phase_6+102>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401215 <+155>:	mov    (%rsp),%rbx
+   0x0000000000401219 <+159>:	lea    0x8(%rsp),%rax
+   0x000000000040121e <+164>:	lea    0x30(%rsp),%rsi
+   0x0000000000401223 <+169>:	mov    %rbx,%rcx
+   0x0000000000401226 <+172>:	mov    (%rax),%rdx
+   0x0000000000401229 <+175>:	mov    %rdx,0x8(%rcx)
+   0x000000000040122d <+179>:	add    $0x8,%rax
+   0x0000000000401231 <+183>:	cmp    %rsi,%rax
+   0x0000000000401234 <+186>:	je     0x40123b <phase_6+193>
+   0x0000000000401236 <+188>:	mov    %rdx,%rcx
+   0x0000000000401239 <+191>:	jmp    0x401226 <phase_6+172>
+   0x000000000040123b <+193>:	movq   $0x0,0x8(%rdx)
+   0x0000000000401243 <+201>:	mov    $0x5,%ebp
+   0x0000000000401248 <+206>:	mov    0x8(%rbx),%rax
+   0x000000000040124c <+210>:	mov    (%rax),%eax
+   0x000000000040124e <+212>:	cmp    %eax,(%rbx)
+   0x0000000000401250 <+214>:	jle    0x401257 <phase_6+221>
+   0x0000000000401252 <+216>:	callq  0x4015ef <explode_bomb>
+   0x0000000000401257 <+221>:	mov    0x8(%rbx),%rbx
+   0x000000000040125b <+225>:	sub    $0x1,%ebp
+   0x000000000040125e <+228>:	jne    0x401248 <phase_6+206>
+   0x0000000000401260 <+230>:	add    $0x58,%rsp
+   0x0000000000401264 <+234>:	pop    %rbx
+   0x0000000000401265 <+235>:	pop    %rbp
+   0x0000000000401266 <+236>:	pop    %r12
+   0x0000000000401268 <+238>:	pop    %r13
+   0x000000000040126a <+240>:	retq
+End of assembler dump.
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00000000004015ef <explode_bomb>
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x00000000004015ef <explode_bomb>
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00000000004015f3 <explode_bomb+4>
+4       breakpoint     keep y   0x000000000040117a <phase_6>
+	breakpoint already hit 1 time
+5       breakpoint     keep y   0x00000000004012a9 <secret_phase>
+6       breakpoint     keep y   0x000000000040124e <phase_6+212>
+7       breakpoint     keep y   0x0000000000401252 <phase_6+216>
+8       breakpoint     keep y   0x00000000004011a8 <phase_6+46>
+9       breakpoint     keep y   0x00000000004011cd <phase_6+83>
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+1 2 3 4 5 6
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb) disas
+Dump of assembler code for function phase_6:
+   0x000000000040117a <+0>:	push   %r13
+   0x000000000040117c <+2>:	push   %r12
+   0x000000000040117e <+4>:	push   %rbp
+   0x000000000040117f <+5>:	push   %rbx
+   0x0000000000401180 <+6>:	sub    $0x58,%rsp
+   0x0000000000401184 <+10>:	lea    0x30(%rsp),%rsi
+   0x0000000000401189 <+15>:	callq  0x401625 <read_six_numbers>
+   0x000000000040118e <+20>:	lea    0x30(%rsp),%r13
+   0x0000000000401193 <+25>:	mov    $0x0,%r12d
+   0x0000000000401199 <+31>:	mov    %r13,%rbp
+   0x000000000040119c <+34>:	mov    0x0(%r13),%eax
+   0x00000000004011a0 <+38>:	sub    $0x1,%eax
+   0x00000000004011a3 <+41>:	cmp    $0x5,%eax
+   0x00000000004011a6 <+44>:	jbe    0x4011ad <phase_6+51>
+   0x00000000004011a8 <+46>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011ad <+51>:	add    $0x1,%r12d
+   0x00000000004011b1 <+55>:	cmp    $0x6,%r12d
+   0x00000000004011b5 <+59>:	jne    0x4011be <phase_6+68>
+   0x00000000004011b7 <+61>:	mov    $0x0,%esi
+   0x00000000004011bc <+66>:	jmp    0x401200 <phase_6+134>
+   0x00000000004011be <+68>:	mov    %r12d,%ebx
+   0x00000000004011c1 <+71>:	movslq %ebx,%rax
+   0x00000000004011c4 <+74>:	mov    0x30(%rsp,%rax,4),%eax
+   0x00000000004011c8 <+78>:	cmp    %eax,0x0(%rbp)
+   0x00000000004011cb <+81>:	jne    0x4011d2 <phase_6+88>
+   0x00000000004011cd <+83>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011d2 <+88>:	add    $0x1,%ebx
+   0x00000000004011d5 <+91>:	cmp    $0x5,%ebx
+   0x00000000004011d8 <+94>:	jle    0x4011c1 <phase_6+71>
+   0x00000000004011da <+96>:	add    $0x4,%r13
+   0x00000000004011de <+100>:	jmp    0x401199 <phase_6+31>
+   0x00000000004011e0 <+102>:	mov    0x8(%rdx),%rdx
+   0x00000000004011e4 <+106>:	add    $0x1,%eax
+   0x00000000004011e7 <+109>:	cmp    %ecx,%eax
+   0x00000000004011e9 <+111>:	jne    0x4011e0 <phase_6+102>
+   0x00000000004011eb <+113>:	jmp    0x4011f2 <phase_6+120>
+   0x00000000004011ed <+115>:	mov    $0x604300,%edx
+   0x00000000004011f2 <+120>:	mov    %rdx,(%rsp,%rsi,2)
+   0x00000000004011f6 <+124>:	add    $0x4,%rsi
+   0x00000000004011fa <+128>:	cmp    $0x18,%rsi
+   0x00000000004011fe <+132>:	je     0x401215 <phase_6+155>
+   0x0000000000401200 <+134>:	mov    0x30(%rsp,%rsi,1),%ecx
+   0x0000000000401204 <+138>:	cmp    $0x1,%ecx
+   0x0000000000401207 <+141>:	jle    0x4011ed <phase_6+115>
+   0x0000000000401209 <+143>:	mov    $0x1,%eax
+   0x000000000040120e <+148>:	mov    $0x604300,%edx
+   0x0000000000401213 <+153>:	jmp    0x4011e0 <phase_6+102>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401215 <+155>:	mov    (%rsp),%rbx
+   0x0000000000401219 <+159>:	lea    0x8(%rsp),%rax
+   0x000000000040121e <+164>:	lea    0x30(%rsp),%rsi
+   0x0000000000401223 <+169>:	mov    %rbx,%rcx
+   0x0000000000401226 <+172>:	mov    (%rax),%rdx
+   0x0000000000401229 <+175>:	mov    %rdx,0x8(%rcx)
+   0x000000000040122d <+179>:	add    $0x8,%rax
+   0x0000000000401231 <+183>:	cmp    %rsi,%rax
+   0x0000000000401234 <+186>:	je     0x40123b <phase_6+193>
+   0x0000000000401236 <+188>:	mov    %rdx,%rcx
+   0x0000000000401239 <+191>:	jmp    0x401226 <phase_6+172>
+   0x000000000040123b <+193>:	movq   $0x0,0x8(%rdx)
+   0x0000000000401243 <+201>:	mov    $0x5,%ebp
+   0x0000000000401248 <+206>:	mov    0x8(%rbx),%rax
+   0x000000000040124c <+210>:	mov    (%rax),%eax
+=> 0x000000000040124e <+212>:	cmp    %eax,(%rbx)
+   0x0000000000401250 <+214>:	jle    0x401257 <phase_6+221>
+   0x0000000000401252 <+216>:	callq  0x4015ef <explode_bomb>
+   0x0000000000401257 <+221>:	mov    0x8(%rbx),%rbx
+   0x000000000040125b <+225>:	sub    $0x1,%ebp
+   0x000000000040125e <+228>:	jne    0x401248 <phase_6+206>
+   0x0000000000401260 <+230>:	add    $0x58,%rsp
+   0x0000000000401264 <+234>:	pop    %rbx
+   0x0000000000401265 <+235>:	pop    %rbp
+   0x0000000000401266 <+236>:	pop    %r12
+   0x0000000000401268 <+238>:	pop    %r13
+   0x000000000040126a <+240>:	retq
+End of assembler dump.
+(gdb) x/3x $esi
+0xffffffffffffddc0:	Cannot access memory at address 0xffffffffffffddc0
+(gdb) x/3x $rax
+0x1d2:	Cannot access memory at address 0x1d2
+(gdb) x/3x $rbx
+0x604300 <node1>:	0x00000228	0x00000001	0x00604310
+(gdb) x/3x *($rbx +8)
+0x604310 <node2>:	0x000001d2	0x00000002	0x00604320
+(gdb) x/3x *($rbx +16)
+0x1d2:	Cannot access memory at address 0x1d2
+(gdb) x/3x *(*($rbx +8)+8)
+0x604320 <node3>:	0x0000018f	0x00000003	0x00604330
+(gdb) x/3x *(*(*($rbx +8)+8)+8)
+0x604330 <node4>:	0x0000031c	0x00000004	0x00604340
+(gdb) x/3x *(*(*(*($rbx +8)+8)+8)+8)
+0x604340 <node5>:	0x00000326	0x00000005	0x00604350
+(gdb) x/3x *(*(*(*(*($rbx +8)+8)+8)+8)+8)
+0x604350 <node6>:	0x000000ad	0x00000006	0x00000000
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+5 4 1 2 3 6
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 7, 0x0000000000401252 in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x00000000004015ef in explode_bomb ()
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+6 3 2 1 4 5
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb)
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb)
+Continuing.
+Congratulations! You've defused the bomb!
+Your instructor has been notified and will verify your solution.
+[Inferior 1 (process 17444) exited normally]
+(gdb) r
+Starting program: /home/warehouse/tony.bumatay/cse361/tony.bumatay/lab2/bomb33/bomb solutions.txt
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+6 3 2 1 4 5
+
+Breakpoint 4, 0x000000000040117a in phase_6 ()
+(gdb) b *0x0401250
+Breakpoint 10 at 0x401250
+(gdb) c
+Continuing.
+
+Breakpoint 6, 0x000000000040124e in phase_6 ()
+(gdb)
+Continuing.
+
+Breakpoint 10, 0x0000000000401250 in phase_6 ()
+(gdb) p $eax
+$1 = 399
+(gdb) p $rbx
+$2 = 6308688
+(gdb) x/i $rbx
+   0x604350 <node6>:	lods   %ds:(%rsi),%eax
+(gdb) disas
+Dump of assembler code for function phase_6:
+   0x000000000040117a <+0>:	push   %r13
+   0x000000000040117c <+2>:	push   %r12
+   0x000000000040117e <+4>:	push   %rbp
+   0x000000000040117f <+5>:	push   %rbx
+   0x0000000000401180 <+6>:	sub    $0x58,%rsp
+   0x0000000000401184 <+10>:	lea    0x30(%rsp),%rsi
+   0x0000000000401189 <+15>:	callq  0x401625 <read_six_numbers>
+   0x000000000040118e <+20>:	lea    0x30(%rsp),%r13
+   0x0000000000401193 <+25>:	mov    $0x0,%r12d
+   0x0000000000401199 <+31>:	mov    %r13,%rbp
+   0x000000000040119c <+34>:	mov    0x0(%r13),%eax
+   0x00000000004011a0 <+38>:	sub    $0x1,%eax
+   0x00000000004011a3 <+41>:	cmp    $0x5,%eax
+   0x00000000004011a6 <+44>:	jbe    0x4011ad <phase_6+51>
+   0x00000000004011a8 <+46>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011ad <+51>:	add    $0x1,%r12d
+   0x00000000004011b1 <+55>:	cmp    $0x6,%r12d
+   0x00000000004011b5 <+59>:	jne    0x4011be <phase_6+68>
+   0x00000000004011b7 <+61>:	mov    $0x0,%esi
+   0x00000000004011bc <+66>:	jmp    0x401200 <phase_6+134>
+   0x00000000004011be <+68>:	mov    %r12d,%ebx
+   0x00000000004011c1 <+71>:	movslq %ebx,%rax
+   0x00000000004011c4 <+74>:	mov    0x30(%rsp,%rax,4),%eax
+   0x00000000004011c8 <+78>:	cmp    %eax,0x0(%rbp)
+   0x00000000004011cb <+81>:	jne    0x4011d2 <phase_6+88>
+   0x00000000004011cd <+83>:	callq  0x4015ef <explode_bomb>
+   0x00000000004011d2 <+88>:	add    $0x1,%ebx
+   0x00000000004011d5 <+91>:	cmp    $0x5,%ebx
+   0x00000000004011d8 <+94>:	jle    0x4011c1 <phase_6+71>
+   0x00000000004011da <+96>:	add    $0x4,%r13
+   0x00000000004011de <+100>:	jmp    0x401199 <phase_6+31>
+   0x00000000004011e0 <+102>:	mov    0x8(%rdx),%rdx
+   0x00000000004011e4 <+106>:	add    $0x1,%eax
+   0x00000000004011e7 <+109>:	cmp    %ecx,%eax
+   0x00000000004011e9 <+111>:	jne    0x4011e0 <phase_6+102>
+   0x00000000004011eb <+113>:	jmp    0x4011f2 <phase_6+120>
+   0x00000000004011ed <+115>:	mov    $0x604300,%edx
+   0x00000000004011f2 <+120>:	mov    %rdx,(%rsp,%rsi,2)
+   0x00000000004011f6 <+124>:	add    $0x4,%rsi
+   0x00000000004011fa <+128>:	cmp    $0x18,%rsi
+   0x00000000004011fe <+132>:	je     0x401215 <phase_6+155>
+   0x0000000000401200 <+134>:	mov    0x30(%rsp,%rsi,1),%ecx
+   0x0000000000401204 <+138>:	cmp    $0x1,%ecx
+   0x0000000000401207 <+141>:	jle    0x4011ed <phase_6+115>
+   0x0000000000401209 <+143>:	mov    $0x1,%eax
+   0x000000000040120e <+148>:	mov    $0x604300,%edx
+   0x0000000000401213 <+153>:	jmp    0x4011e0 <phase_6+102>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401215 <+155>:	mov    (%rsp),%rbx
+   0x0000000000401219 <+159>:	lea    0x8(%rsp),%rax
+   0x000000000040121e <+164>:	lea    0x30(%rsp),%rsi
+   0x0000000000401223 <+169>:	mov    %rbx,%rcx
+   0x0000000000401226 <+172>:	mov    (%rax),%rdx
+   0x0000000000401229 <+175>:	mov    %rdx,0x8(%rcx)
+   0x000000000040122d <+179>:	add    $0x8,%rax
+   0x0000000000401231 <+183>:	cmp    %rsi,%rax
+   0x0000000000401234 <+186>:	je     0x40123b <phase_6+193>
+   0x0000000000401236 <+188>:	mov    %rdx,%rcx
+   0x0000000000401239 <+191>:	jmp    0x401226 <phase_6+172>
+   0x000000000040123b <+193>:	movq   $0x0,0x8(%rdx)
+   0x0000000000401243 <+201>:	mov    $0x5,%ebp
+   0x0000000000401248 <+206>:	mov    0x8(%rbx),%rax
+   0x000000000040124c <+210>:	mov    (%rax),%eax
+   0x000000000040124e <+212>:	cmp    %eax,(%rbx)
+=> 0x0000000000401250 <+214>:	jle    0x401257 <phase_6+221>
+   0x0000000000401252 <+216>:	callq  0x4015ef <explode_bomb>
+   0x0000000000401257 <+221>:	mov    0x8(%rbx),%rbx
+   0x000000000040125b <+225>:	sub    $0x1,%ebp
+   0x000000000040125e <+228>:	jne    0x401248 <phase_6+206>
+   0x0000000000401260 <+230>:	add    $0x58,%rsp
+   0x0000000000401264 <+234>:	pop    %rbx
+   0x0000000000401265 <+235>:	pop    %rbp
+   0x0000000000401266 <+236>:	pop    %r12
+   0x0000000000401268 <+238>:	pop    %r13
+   0x000000000040126a <+240>:	retq
+End of assembler dump.
+(gdb) p *(int*) $rbx
+$3 = 173
+(gdb) p 0xad
+$4 = 173
+(gdb) Write failed: Broken pipe
+tonys-mbp:~ Tony$
